@@ -1,4 +1,5 @@
 @echo off
+%time% = date /T 
 git add *
-git commit -m (date)
+git commit -m  %time%
 git push
