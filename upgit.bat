@@ -1,4 +1,4 @@
 @echo off
 git add *
-git commit -m "new"
+git commit -m (date)
 git push
