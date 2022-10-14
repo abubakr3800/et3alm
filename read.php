@@ -40,7 +40,7 @@ foreach ($json_a as $d2)
     }
 
 }
-
+array_unique($json_a)
 // echo json_encode($response);
 file_put_contents('myfile.json', json_encode($json_a));
 exit;
