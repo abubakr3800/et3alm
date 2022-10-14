@@ -20,6 +20,7 @@
 
         $ins = "INSERT into courses(name , link) values ('$name' , '$link')";
         mysqli_query( $con , $ins);
+        header("location:ajaxfile.php");
     }
     ?>
 </body>

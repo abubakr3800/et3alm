@@ -19,5 +19,4 @@ while($row = mysqli_fetch_assoc($userData)){
 
 echo json_encode($response);
 file_put_contents('myfile.json', json_encode($response));
-
 exit;
