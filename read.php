@@ -1,48 +1,42 @@
 <?php
 
+$name = $_POST['name'];
+$link = $_POST['link'];
+
 $string = file_get_contents("myfile.json");
 $json_a = json_decode($string, true);
 
-echo var_dump($json_a) . '<br/>' . '<br/>' . '<br/>';
-echo count($json_a) . '<br/>' . '<br/>' . '<br/>';
-echo var_dump($json_a[0]) . '<br/>' . '<br/>' . '<br/>';
-// echo var_dump($json_a[0]) . '<br/>' . '<br/>' . '<br/>' ;
-// echo $json_a[0]["name"];
-// $new_values = array( "id" => (count($json_a) +1 ) , "name" => "ali" , "link" => "https:/google.com");
-// array_push($json_a , $new_values);
+echo var_dump($json_a) . '<br/>' . '<br/>'. '<br/>';
+// echo count($json_a) . '<br/>' . '<br/>' . '<br/>';
 
-foreach($json_a as $values){
-    foreach($values as $value){
-        echo $value . "<br>";
-    }
+$new_values = array( "id" => (count($json_a) +1 ) , "name" => $name , "link" => $link );
+array_push($json_a , $new_values);
+
+function unique_multi_array($array, $key) { 
+    $temp_array = array(); 
+    $i = 0; 
+    $key_array = array(); 
+    
+    foreach($array as $val) { 
+        if (!in_array($val[$key], $key_array)) { 
+            $key_array[$i] = $val[$key]; 
+            $temp_array[$i] = $val; 
+        } 
+        $i++; 
+    } 
+    return $temp_array; 
 }
 
-$i = 0;
-foreach ($json_a as $d2)
-{
-    $i++ ;
-    echo "<br>" . $i . "<br>" . "<br>";
-      $first_link = $d2 ['link'];
-      foreach ($json_a as $d)
-      {
-        $second_link = $d ['link']; 
-        echo strcmp($d2['name'] , $d['name']);
-        if ( !strcmp($first_link , $second_link) && !strcmp($d2['name'] , $d['name']) )
-        {
-            echo "Match found!";
-            unset($json_a[$i]);
-        }
-        else
-        {
-            echo "No match found!";
-            // echo $first_link . " != " . $second_link; 
-        }
-    }
-
+function link_href_array(){
+    
 }
 
-// echo json_encode($response);
-file_put_contents('myfile.json', json_encode($json_a));
+  $output = unique_multi_array($json_a,'link');
+  print_r($output);
+
+
+// echo json_encode($output);
+file_put_contents('myfile.json', json_encode($output));
 exit;
 
 // $json_a[0] ->array_keys();

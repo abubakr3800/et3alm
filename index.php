@@ -7,12 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="read.php" method="post">
         <input type="text" name="name" id="">
-        <input type="url" name="link" id="">
+        <textarea type="url" name="link" id=""></textarea>
         <button type="submit">send</button>
     </form>
-    <?php
+    <!-- <?php
     require 'conn.php';
     if(isset($_POST['name'])){
         $name = $_POST['name'];
@@ -22,6 +22,6 @@
         mysqli_query( $con , $ins);
         header("location:ajaxfile.php");
     }
-    ?>
+    ?> -->
 </body>
 </html>
